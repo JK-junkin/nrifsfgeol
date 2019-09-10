@@ -1,0 +1,22 @@
+2019.04.25 国際水研かつおグループ
+
+【使用方法】
+1. リンクから自分のパソコンのOSに合うzipファイルをダウンロードする。
+
+2. ダウンロードしたzipファイルを展開する。
+
+3. 展開したフォルダ名は geol (windows) または geol (Mac) となるはずなので, (前の半角スペースを削除するか、半角スペース以降を削除する。
+
+
+【正誤表】
+(1)
+コード：0-format-LAT292data.r
+行番号：94行目
+　誤　：m <- map("world2", xlim = lon_range, ylim = lat_range, plot = F)
+　正　：m <- maps::map("world2", xlim = lon_range, ylim = lat_range, plot = F)
+
+(2)
+コード：3-listup-kalmanfilter-fitResults.r
+行番号：136行目
+　誤　：list <- setDT(list)
+　正　：list <- dplyr::arrange(list, senario)
