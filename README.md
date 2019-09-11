@@ -14,7 +14,7 @@
 
 これらのRコードは照度センサー付き記録型電子標識 (主としてLAT2910, Lotek Wireless Inc.) データに基づくカツオの移動経路推定・補正のためのコードです.  
 
-解析に利用した重要なRパッケージはukfsstとanalyzepsatです.  
+解析に利用した重要なRパッケージは[ukfsst](https://github.com/positioning/kalmanfilter/wiki)と[analyzepsat](https://github.com/positioning/kalmanfilter/wiki/Analyzepsat)です.  
 
 ## その他の特徴 Feature
 (工事中)
@@ -117,11 +117,5 @@ Junji Kinoshita (kinoshitaj@affrc.go.jp)
 ## リンク集 Links
 - [国際水産資源研究所 データベース等](http://fsf.fra.affrc.go.jp/Tag/Atag_proc.html)  
 - [『水産技術』11巻2号に掲載の技術報告](https://www.fra.affrc.go.jp/bulletin/fish_tech/11-2/110203.pdf)
-- [ukfsstのgithubページ](https://github.com/positioning/kalmanfilter)  
-- [analyzepsatのgithubページ](https://github.com/positioning/kalmanfilter)  
-
-
-
-
-
-
+- [ukfsstのgithub wikiページ](https://github.com/positioning/kalmanfilter/wiki)  
+- [analyzepsatのgithub wikiページ](https://github.com/positioning/kalmanfilter/wiki/Analyzepsat)  
