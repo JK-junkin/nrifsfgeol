@@ -2,7 +2,7 @@
 このページは, 水産研究・教育機構 国際水産資源研究所のホームページ (http://fsf.fra.affrc.go.jp/Tag/Atag_proc.html) で公開しているRコードの最新版をダウンロードできます.
 
 ## 説明 Description
-このページからは以下のRスクリプトとテキストファイルがダウンロードできます.  
+このページからは以下のRコードとテキストファイルをダウンロードできます.  
   - 0-format-LAT292data.r  
   - 1-install-needed-libraries.r  
   - 2-run-ukfsst-or-kftrack.r  
@@ -12,7 +12,9 @@
   - func\_get\_oisstV2_highres.R  
   - ReadMe.txt  
 
-これらのRスクリプトは, かつおグループがこれまで実施してきた, 照度センサー付き記録型電子標識 (LAT2910, Lotek Wireless Inc.) データに基づくカツオの移動経路推定・補正のためのコードです. 解析に利用したRのパッケージはukfsstとanalyzepsatです.
+これらのRコードは照度センサー付き記録型電子標識 (主としてLAT2910, Lotek Wireless Inc.) データに基づくカツオの移動経路推定・補正のためのコードです.  
+
+解析に利用した重要なRパッケージはukfsstとanalyzepsatです.  
 
 ## その他の特徴 Feature
 (工事中)
@@ -21,7 +23,7 @@
 ### Rのバージョン
 - R (3.4.3 ~ 3.5.2で動作確認済み)
 
-### 各スクリプトで使用しているRパッケージ
+### 各コードで使用しているRパッケージ
 1. **0-format-LAT292data.r**  
 	needs  
 	devtools  
@@ -93,7 +95,7 @@
     rvest  
 
 ## 使い方 Usage
-各Rスクリプト (〇〇.R または 〇〇.r) を各自のパソコンにダウンロードしてください.  
+各Rコード (〇〇.R または 〇〇.r) を各自のパソコンにダウンロードしてください.  
 (工事中)
 
 [国際水産資源研究所のホームページ](http://fsf.fra.affrc.go.jp/Tag/Atag_proc.html)に公開している概要説明スライドのp.113-120も参照ください.
@@ -115,6 +117,8 @@ Junji Kinoshita (kinoshitaj@affrc.go.jp)
 ## リンク集 Links
 - [国際水産資源研究所 データベース等](http://fsf.fra.affrc.go.jp/Tag/Atag_proc.html)  
 - [『水産技術』11巻2号に掲載の技術報告](https://www.fra.affrc.go.jp/bulletin/fish_tech/11-2/110203.pdf)
+- [ukfsstのgithubページ](https://github.com/positioning/kalmanfilter)  
+- [analyzepsatのgithubページ](https://github.com/positioning/kalmanfilter)  
 
 
 
