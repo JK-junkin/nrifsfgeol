@@ -91,7 +91,7 @@ as.hexmode(128)                 # 50 % 透明度 (128 = 256/2) の16進数を取
 lon_range <- c(120, 160)        # 描画範囲 (経度)
 lat_range <- c( 10,  50)        # 描画範囲 (緯度)
 
-m <- map("world2", xlim = lon_range, ylim = lat_range, plot = F)
+m <- maps::map("world2", xlim = lon_range, ylim = lat_range, plot = F)
 
 # 切り取り範囲の描画と保存 (この範囲以外は線形補間される) ---
 # 外れ値の条件設定 (説明できる理由を持ちましょう)

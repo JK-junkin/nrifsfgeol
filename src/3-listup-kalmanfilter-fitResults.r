@@ -133,7 +133,7 @@ merge_fit_results <- function(i) {
 }
 
 for(i in seq_len(nmodel)) merge_fit_results(i)
-list <- setDT(list)
+list <- dplyr::arrange(list, senario)
 # list[, senario := zoo::na.locf(senario)]
 
 # [6] 保存 =====================================================================
