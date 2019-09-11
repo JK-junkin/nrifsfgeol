@@ -3,14 +3,14 @@
 
 ## 説明 Description
 このページからは以下のRスクリプトとテキストファイルがダウンロードできます.  
-	0-format-LAT292data.r  
-	1-install-needed-libraries.r  
-	2-run-ukfsst-or-kftrack.r  
-	<span style="color: gray; ">(2.5-run-ukfsst-or-kftrack-parallel.r)</span>  
-	3-listup-kalmanfilter-fitResults.r  
-	4-run-analyzepsat.R  
-	func\_get\_oisstV2_highres.R  
-	ReadMe.txt  
+  - 0-format-LAT292data.r  
+  - 1-install-needed-libraries.r  
+  - 2-run-ukfsst-or-kftrack.r  
+      - <span style="color: gray; ">(2.5-run-ukfsst-or-kftrack-parallel.r)</span>  
+  - 3-listup-kalmanfilter-fitResults.r  
+  - 4-run-analyzepsat.R  
+  - func\_get\_oisstV2_highres.R  
+  - ReadMe.txt  
 
 これらのRスクリプトは, かつおグループがこれまで実施してきた, 照度センサー付き記録型電子標識 (LAT2910, Lotek Wireless Inc.) データに基づくカツオの移動経路推定・補正のためのコードです. 解析に利用したRのパッケージはukfsstとanalyzepsatです.
 
