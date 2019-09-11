@@ -6,7 +6,7 @@
 - **0-format-LAT292data.r**  
 - **1-install-needed-libraries.r**  
 - **2-run-ukfsst-or-kftrack.r**  
-- <span style="color: gray; ">**2.5-run-ukfsst-or-kftrack-parallel.r**</span>  
+- <span style="color: gray; ">2.5-run-ukfsst-or-kftrack-parallel.r</span>
 - **3-listup-kalmanfilter-fitResults.r**  
 - **4-run-analyzepsat.R**  
 - **func\_get\_oisstV2_highres.R**  
