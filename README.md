@@ -1,8 +1,8 @@
 # nrifsfgeol
-このページは, 水産研究・教育機構 国際水産資源研究所のホームページ (http://fsf.fra.affrc.go.jp/Tag/Atag_proc.html) で公開しているRコードの最新版をダウンロードできます.
+このページは, 水産研究・教育機構 国際水産資源研究所のホームページ (http://fsf.fra.affrc.go.jp/Tag/Atag_proc.html) で公開しているRコードの最新版を置いてあるページです.  
 
 ## 説明 Description
-このページからは以下のRコードとテキストファイルをダウンロードできます.  
+1. このページからは以下のRコードとテキストファイルをダウンロードできます.  
   - 0-format-LAT292data.r  
   - 1-install-needed-libraries.r  
   - 2-run-ukfsst-or-kftrack.r  
@@ -12,9 +12,9 @@
   - func\_get\_oisstV2_highres.R  
   - ReadMe.txt  
 
-これらのRコードは照度センサー付き記録型電子標識 (主としてLAT2910, Lotek Wireless Inc.) データに基づくカツオの移動経路推定・補正のためのコードです.  
+1. これらのRコードは照度センサー付き記録型電子標識 (主としてLAT2910, Lotek Wireless Inc.) データに基づくカツオの移動経路推定・補正のためのコードです.  
 
-解析に利用した重要なRパッケージは[ukfsst](https://github.com/positioning/kalmanfilter/wiki)と[analyzepsat](https://github.com/positioning/kalmanfilter/wiki/Analyzepsat)です.  
+1. 解析に利用した重要なRパッケージは[ukfsst](https://github.com/positioning/kalmanfilter/wiki)と[analyzepsat](https://github.com/positioning/kalmanfilter/wiki/Analyzepsat)です.  
 
 ## その他の特徴 Feature
 (工事中)
@@ -33,7 +33,7 @@
 	maps  
 	mapproj  
 	mapdata  
-    pathological  
+    pathological (2018.05.30 CRAN package repositoryから削除)  
     zoo  
 
 1. **1-install-needed-libraries.r**  
@@ -54,7 +54,7 @@
 	mapdata  
 	tidyverse  
 	data.table  
-	pathological  
+	pathological (2018.05.30 CRAN package repositoryから削除)  
 	egg  
 	gginnards  
 	ggpmisc  
@@ -64,7 +64,7 @@
 	devtools  
 	data.table  
 	tidyverse  
-	pathological  
+	pathological (2018.05.30 CRAN package repositoryから削除)  
 	writexl  
 	zoo  
 	tcltk  
@@ -80,7 +80,7 @@
 	tcltk  
 	tidyverse  
 	data.table  
-	pathological  
+	pathological (2018.05.30 CRAN package repositoryから削除)  
 	egg  
 	gginnards  
 	ggpmisc  
@@ -91,7 +91,7 @@
 	ncdf4  
 	date  
     lubridate  
-	pathological  
+	pathological (2018.05.30 CRAN package repositoryから削除)  
     rvest  
 
 ## 使い方 Usage
@@ -104,9 +104,15 @@
 ここでは注意していただきたい環境構築の方法を説明します.  
 (工事中)
 
+1. このコードで使用しているパッケージ pathological は2018年5月30日にCRANから削除されたようです. 通常のパッケージのダウンロード方法ではうまくいかないので, 上記プログラム中で別の手順を踏んでアーカイブされたものをダウンロード & インストールしています. 
+
 ## 質問, 提案など Contribution
+プログラムコードを走らせてみたがエラーや警告が出て動かないなどの問題が出た場合は, 下記のメールアドレスかこのページからPull requestを作成しておしらせください.
 
 ## ライセンス Licence
+本コードはいずれも __GPLv3__ です.  
+
+参考  
 - BSD (ukfsstパッケージ)  
 - GPLv3 (analyzepsatパッケージ)  
 
