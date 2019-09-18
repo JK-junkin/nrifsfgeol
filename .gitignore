@@ -37,3 +37,6 @@ rsconnect/
 
 # Mac auto-file
 .DS_Store
+
+# temporary working files directory
+$(find -E . -type d -a -iregex '\./[0-9]+.+' -print)
