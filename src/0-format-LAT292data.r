@@ -1,18 +1,21 @@
 
 ## Text Encoding: UTF-8
 
-## --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
-## To save R script as CP932, text encoding for Windows (in RStudio)
-## File --> Save with encoding... --> Choose Encoding -->
-##                                 check Show all encodings and select CP932
-## --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
-
+# --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+# The way to change Text Encoding in RStudio
+# File --> Reopen with Encoding... --> Choose Encoding -->
+#                                 check Show all encodings and select UTF-8
+# --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+# To save R script after changing Text Encoding for Windows in RStudio
+# File --> Save with encoding... --> Choose Encoding -->
+#                                 check Show all encodings and select CP932
+# --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
 
 ## == ======================================================================= ==
 ##                 Lotek製アーカイバルタグLAT292のデータを
 ##            ukfsst または kftrack の入力様式に変換するプログラム
 ## == ======================================================================= ==
-## 初稿: 2018/06/19 ; 最終更新: 2019/03/06
+## 初稿: 2018/06/19 ; 最終更新: 2019/09/18
 ## 作成者: 木下 順二 (ご質問やバグ報告はこちらまで --> kinoshitaj@affrc.go.jp)
 ## 必要なRのversion: 3.4.3 ~ 3.5.2で動作確認
 ## == ======================================================================= ==
@@ -27,8 +30,20 @@ options(stringsAsFactors = F, repos = "https://cran.ism.ac.jp/") # ここは統�
 
 
 # [3] パッケージのロード =======================================================
-# install.packages("needs")
+install.packages("needs")
 library(needs)
+
+    # for pathological download error (2019.5.30 CRAN落ち)
+    url <- "https://cran.r-project.org/src/contrib/Archive/pathological/pathological_0.1-2.tar.gz"
+    pkgFile <- "pathological_0.1-2.tar.gz"
+    download.file(url = url, destfile = pkgFile)
+    # 依存パッケージを別途download & install
+    install.packages(c("assertive.base", "assertive.files", "assertive.numbers",
+                       "assertive.properties", "assertive.reflection", 
+                       "assertive.strings", "assertive.types"))
+   install.packages(pkgs = pkgFile, type = "source", repos = NULL)
+   unlink(pkgFile)
+
 needs(devtools, tidyverse, lubridate, data.table, maps, mapproj, mapdata,
       pathological, zoo)
 

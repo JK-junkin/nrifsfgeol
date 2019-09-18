@@ -1,19 +1,22 @@
 
 ## Text Encoding: UTF-8
 
-## --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
-## To save R script as CP932, text encoding for Windows (in RStudio)
-## File --> Save with encoding... --> Choose Encoding -->
-##                                 check Show all encodings and select CP932
-## --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
-
+# --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+# The way to change Text Encoding in RStudio
+# File --> Reopen with Encoding... --> Choose Encoding -->
+#                                 check Show all encodings and select UTF-8
+# --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+# To save R script after changing Text Encoding for Windows in RStudio
+# File --> Save with encoding... --> Choose Encoding -->
+#                                 check Show all encodings and select CP932
+# --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
 
 ## == ======================================================================= ==
 ##    ukfsst と analyzepsat の実行に必要なRパッケージのインストールプログラム
 ## == ======================================================================= ==
 ## R version 3.4.3 ~ 3.5.2で動作確認済み
 ##
-## 初  稿: 2017/01/31; 最終更新: 2019/03/03
+## 初  稿: 2017/01/31; 最終更新: 2019/09/18
 ## 作成者: J.Kinoshita 
 ## 質問やバグ報告: NRIFSF-SKJG_at_ml.affrc.go.jp (_at_を@に変更して下さい) まで.
 ##
@@ -90,7 +93,7 @@ if (!any('devtools' == installed.packages()[, "Package"])) {
 #   入力例:
 #   Do you (中略) needs compilation? (Yes/no/cancel) Yes
 
-# devtoolsパッケージのロード
+# devtoolsパッケージのロードとアタッチ
 library(devtools)
 
 # _ (2) ukfsstパッケージと関連パッケージをgithubからDL & INST --------------
