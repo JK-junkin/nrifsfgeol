@@ -97,7 +97,7 @@
 ## 使い方 Usage
 1. 各Rコード (〇〇.R または 〇〇.r) を各自のパソコンにダウンロードしてください.  
 
-1. 各自のパソコンのフォルダ構造は以下を想定しています.[^footnote]  
+1. 各自のパソコンのフォルダ構造は以下を想定しています[^1].  
 
 ```R
 	(C:/Users/YOURNAME/Documents や /Users/YOURNAME/Documents など)
@@ -107,7 +107,7 @@
 	    └── src
 ```
 
-[^footnote]: [国際水産資源研究所のホームページ](http://fsf.fra.affrc.go.jp/Tag/Atag_proc.html)に公開している概要説明スライドのp.113-120も参照ください.  
+[^1]: [国際水産資源研究所のホームページ](http://fsf.fra.affrc.go.jp/Tag/Atag_proc.html)に公開している概要説明スライドのp.113-120も参照ください.  
 
 ## インストール方法 Install
 ここでは注意していただきたい環境構築の方法を説明します.  
