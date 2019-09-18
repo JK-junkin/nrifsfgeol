@@ -107,7 +107,7 @@
 	    └── src
 ```
 
-<a name="mfn1">1</a>: [国際水産資源研究所のホームページ](http://fsf.fra.affrc.go.jp/Tag/Atag_proc.html)に公開している概要説明スライドのp.113-120も参照ください.  
+<a name="mfn1", color="blue">*^{1}</a>: [国際水産資源研究所のホームページ](http://fsf.fra.affrc.go.jp/Tag/Atag_proc.html)に公開している概要説明スライドのp.113-120も参照ください.  
 
 ## インストール方法 Install
 ここでは注意していただきたい環境構築の方法を説明します.  
