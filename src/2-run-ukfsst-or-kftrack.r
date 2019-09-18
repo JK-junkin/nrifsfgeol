@@ -1,19 +1,22 @@
 
 ## Text Encoding: UTF-8
 
-## --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
-## To save R script as CP932, text encoding for Windows (in RStudio)
-## File --> Save with encoding... --> Choose Encoding -->
-##                                 check Show all encodings and select CP932
-## --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
-
+# --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+# The way to change Text Encoding in RStudio
+# File --> Reopen with Encoding... --> Choose Encoding -->
+#                                 check Show all encodings and select UTF-8
+# --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+# To save R script after changing Text Encoding for Windows in RStudio
+# File --> Save with encoding... --> Choose Encoding -->
+#                                 check Show all encodings and select CP932
+# --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
 
 ## == ======================================================================= ==
 ##                         ukfsst を実行するプログラム
 ## == ======================================================================= ==
 ## R version 3.4.3 ~ 3.5.2で動作確認済み
 ##
-## 初  稿: 2017/01/31; 最終更新: 2019/03/03
+## 初  稿: 2017/01/31; 最終更新: 2019/09/18
 ## 作成者: J.Kinoshita 
 ## 質問やバグ報告: NRIFSF-SKJG_at_ml.affrc.go.jp (_at_を@に変更して下さい) まで.
 ##
@@ -36,8 +39,19 @@ options(stringsAsFactors = F, repos = "https://cran.ism.ac.jp/") # ここは統�
 
 
 # [3] パッケージのロード =======================================================
-needs(ukfsst, devtools, maps, mapproj, mapdata, tidyverse, data.table,
-      pathological, egg, gginnards, ggpmisc)
+  # [初回のみで良い] for pathological download error (2019.5.30 CRAN落ち)
+  # url <- "https://cran.r-project.org/src/contrib/Archive/pathological/pathological_0.1-2.tar.gz"
+  # pkgFile <- "pathological_0.1-2.tar.gz"
+  # download.file(url = url, destfile = pkgFile)
+  # install.packages(c("assertive.base", "assertive.files", "assertive.numbers",
+  #                    "assertive.properties", "assertive.reflection", "assertive.strings",
+  #                    "assertive.types")) # dependsパッケージ群
+  # install.packages(pkgs = pkgFile, type = "source", repos = NULL)
+  # unlink(pkgFile)
+
+needs(tidyverse, stringi, httr, rvest, lubridate, devtools, 
+      maps, mapproj, mapdata, data.table, pathological, ukfsst, 
+      egg, gginnards, ggpmisc, foreach, doParallel)
 
 
 # [4] ディレクトリの設定 =======================================================
@@ -59,31 +73,31 @@ source(file.path(wdir, "src/func_get_oisstV2_highres.R"))
 # [注] Lotek社の標識 (LAT292-) の場合は次のプログラムを別途実行し, ukfsstで利用
 #      可能な様式でデータセットを作成してください. --> 0-format-LAT292data.r
 
-# _ (0) どのようなデータ形式が必要かを確認 ------------
-data(blue.shark)        # ukfsstパッケージに含まれる例データ
-head(blue.shark, n = 3) # 例示データの最初の3行
-# day month year    Long    Lat   sst
-#  11     4 2001 201.722 18.875 24.73
-#  16     4 2001 201.190 24.150 24.37
-#  18     4 2001 202.950 12.890 24.73
-
-str(blue.shark)         # データの型等, 構造確認
-# 'data.frame':	45 obs. of  6 variables:
-#  $ day  : num  11 16 18 22 24 26 28 30 2 4 ...
-#  $ month: num  4 4 4 4 4 4 4 4 5 5 ...
-#  $ year : num  2001 2001 2001 2001 2001 ...
-#  $ Long : num  202 201 203 199 201 ...
-#  $ Lat  : num  18.9 24.1 12.9 28.8 22.6 ...
-#  $ sst  : num  24.7 24.4 24.7 24.4 23.8 ...
-
-# [注] いずれも数値型, int (integer) またはnum (numeric), であること. 
-#      1列目: day (日)
-#      2列目: month (月)
-#      3列目: year (年)
-#      4列目: Long (経度) 0 ~ 360 
-#      5列目: Lat (緯度)
-#      6列目: sst (タグの記録した表面水温)
-# --->>> 自分のデータを解析する場合は以上の様式で準備してください.
+    # _ (0) どのようなデータ形式が必要かを確認 ------------
+    data(blue.shark)        # ukfsstパッケージに含まれる例データ
+    head(blue.shark, n = 3) # 例示データの最初の3行
+    # day month year    Long    Lat   sst
+    #  11     4 2001 201.722 18.875 24.73
+    #  16     4 2001 201.190 24.150 24.37
+    #  18     4 2001 202.950 12.890 24.73
+    
+    str(blue.shark)         # データの型等, 構造確認
+    # 'data.frame':	45 obs. of  6 variables:
+    #  $ day  : num  11 16 18 22 24 26 28 30 2 4 ...
+    #  $ month: num  4 4 4 4 4 4 4 4 5 5 ...
+    #  $ year : num  2001 2001 2001 2001 2001 ...
+    #  $ Long : num  202 201 203 199 201 ...
+    #  $ Lat  : num  18.9 24.1 12.9 28.8 22.6 ...
+    #  $ sst  : num  24.7 24.4 24.7 24.4 23.8 ...
+    
+    # [注] いずれも数値型, int (integer) またはnum (numeric), であること. 
+    #      1列目: day (日)
+    #      2列目: month (月)
+    #      3列目: year (年)
+    #      4列目: Long (経度) 0 ~ 360 
+    #      5列目: Lat (緯度)
+    #      6列目: sst (タグの記録した表面水温)
+    # --->>> 自分のデータを解析する場合は以上の様式で準備してください.
 
 # _ (1) タグのデータディレクトリの中身を確認 ------------
 dir(path = file.path(wdir, "input"), full.names = F)
@@ -131,8 +145,8 @@ sst.path <- get.sst.from.server(track[, 1:6], removeland = F,
                                 folder = file.path(sstdir, "oisstV2_1deg7day"))
 
 # __ (1.2) TAGssta (0.1 arc-degree, 8 or 3 days mean) ----------
-?get.avhrr.sst # get.avhrr.sst() のヘルプ (英語)
-# [注] Arguments節のnday項には 5day か 8day とあるが, 5dayは利用不可のよう.
+  ?get.avhrr.sst # get.avhrr.sst() のヘルプ (英語)
+  # [注] Arguments節のnday項には 5day か 8day とあるが, 5dayは利用不可のよう.
 
 # 日解像度の指定
 day.resol <- "3day"
@@ -147,11 +161,11 @@ sst.path <- get.avhrr.sst(track[, 1:6], folder = TAGsstdir, nday = day.resol)
 #                           product = "TN2ssta", nday = "1day")
 
 # __ (1.3) TBAssta (0.1 arc-degree, 8 day) ----------
-?get.blended.sst # get.blended.sst() のヘルプ (英語)
-# [注] Arguments節のnday項には 5day か 8day とあるが, ndayを5dayに変更しても
-#      ダウンロードされるファイル名は8dayの値となる. ただし, 5dayと8dayのデータ
-#      を比較すると水温の値が異なるので, 別々のデータセットからDLしていると判断
-#      される. 関数の設定バグの可能性があるので, 基本は8daysを使う.
+  ?get.blended.sst # get.blended.sst() のヘルプ (英語)
+  # [注] Arguments節のnday項には 5day か 8day とあるが, ndayを5dayに変更しても
+  #      ダウンロードされるファイル名は8dayの値となる. ただし, 5dayと8dayのデータ
+  #      を比較すると水温の値が異なるので, 別々のデータセットからDLしていると判断
+  #      される. 関数の設定バグの可能性があるので, 基本は8daysを使う.
 
 # 日解像度の指定
 day.resol <- "8day"
@@ -191,7 +205,8 @@ inits <- expand.grid(u =    0,
                      b0 =   0) %>% # 経度と緯度の観測誤差
   # dplyr::select(u, v, D, bx, by, bsst, sx, sy, ssst, r, a0, b0) %>% 
   dplyr::arrange(u, v, D, bx, by, bsst, sx, sy, ssst, r, a0, b0) %>% print(.)
-nrow(inits) # 288
+
+nrow(inits) # シナリオ数
 
 
 # [8] カルマンフィルターモデルの実行 ====================================
@@ -222,7 +237,7 @@ detail_theme <- theme(line = element_line(size = 0.3),
                       panel.grid = element_line(size = 0.1, colour = "black"))
 
 # _ (4) [7]で設定した初期値を連続で実行する場合 ----------
-for(i in 1:5) {# seq_len(nrow(inits))) {
+for(i in seq_len(nrow(inits))) {
   if (kf.type == "ukfsst") {
     # [注] 不要な列があると計算エラーがでるので6列となるようにすること.
     fit <- kfsst(data = track[, 1:6], 

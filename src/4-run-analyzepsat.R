@@ -1,19 +1,22 @@
 
 ## Text Encoding: UTF-8
 
-## --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
-## To save R script as CP932, text encoding for Windows (in RStudio)
-## File --> Save with encoding... --> Choose Encoding -->
-##                                 check Show all encodings and select CP932
-## --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
-
+# --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+# The way to change Text Encoding in RStudio
+# File --> Reopen with Encoding... --> Choose Encoding -->
+#                                 check Show all encodings and select UTF-8
+# --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+# To save R script after changing Text Encoding for Windows in RStudio
+# File --> Save with encoding... --> Choose Encoding -->
+#                                 check Show all encodings and select CP932
+# --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
 
 ## == ======================================================================= ==
 ##                       analyzepsat を実行するプログラム
 ## == ======================================================================= ==
 ## R version 3.4.3 ~ 3.5.2で動作確認済み
 ##
-## 初  稿: 2017/01/31; 最終更新: 2019/03/03
+## 初  稿: 2017/01/31; 最終更新: 2019/09/18
 ## 作成者: J.Kinoshita 
 ## 質問やバグ報告: NRIFSF-SKJG_at_ml.affrc.go.jp (_at_を@に変更して下さい) まで.
 ##
@@ -53,35 +56,35 @@ source(file.path(wdir, "src/funcs_analyzepsat.R")) # analayzepsatの処理に必
 
 
 # [5] データの準備 =============================================================
-# _ (0) どのようなデータ形式が必要かを確認 ------------
-data(big.241, package = "kftrack") # 例示データ
-head(big.241, n = 3)               # 例示データの最初の3行を表示
-# day month year    long  lati
-#  21     1 1999 201.750 18.65
-#  22     1 1999 204.520 20.00
-#  23     1 1999 206.086 22.00
-# [注] 事例データにあるのはday, month, year, long, latの5つ
-
-str(big.241)
-# 'data.frame':	76 obs. of  5 variables:
-#  $ day  : num  21 22 23 24 25 26 27 28 29 30 ...
-#  $ month: num  1 1 1 1 1 1 1 1 1 1 ...
-#  $ year : num  1999 1999 1999 1999 1999 ...
-#  $ long : num  202 205 206 204 205 ...
-#  $ lati : num  18.6 20 22 23.5 21.5 ...
-
-# 水温と最大遊泳深度のダミーデータ列を作成
-# [注] 例示データにはタグの水温と最大遊泳深度 (maxz) が (なぜか) ない. 
-#      直下の処理は元の説明サイトにも書いてあります.
-big.241$sst  <- 10  # 10 °C
-big.241$maxz <- -10 # 10 m
-
-head(big.241, n = 3)
-# day month year    long  lati sst maxz
-#  21     1 1999 201.750 18.65  10  -10
-#  22     1 1999 204.520 20.00  10  -10
-#  23     1 1999 206.086 22.00  10  -10
-# -->> この形式で準備しましょう.
+    # _ (0) どのようなデータ形式が必要かを確認 ------------
+    data(big.241, package = "kftrack") # 例示データ
+    head(big.241, n = 3)               # 例示データの最初の3行を表示
+    # day month year    long  lati
+    #  21     1 1999 201.750 18.65
+    #  22     1 1999 204.520 20.00
+    #  23     1 1999 206.086 22.00
+    # [注] 事例データにあるのはday, month, year, long, latの5つ
+    
+    str(big.241)
+    # 'data.frame':	76 obs. of  5 variables:
+    #  $ day  : num  21 22 23 24 25 26 27 28 29 30 ...
+    #  $ month: num  1 1 1 1 1 1 1 1 1 1 ...
+    #  $ year : num  1999 1999 1999 1999 1999 ...
+    #  $ long : num  202 205 206 204 205 ...
+    #  $ lati : num  18.6 20 22 23.5 21.5 ...
+    
+    # 水温と最大遊泳深度のダミーデータ列を作成
+    # [注] 例示データにはタグの水温と最大遊泳深度 (maxz) が (なぜか) ない. 
+    #      直下の処理は元の説明サイトにも書いてあります.
+    big.241$sst  <- 10  # 10 °C
+    big.241$maxz <- -10 # 10 m
+    
+    head(big.241, n = 3)
+    # day month year    long  lati sst maxz
+    #  21     1 1999 201.750 18.65  10  -10
+    #  22     1 1999 204.520 20.00  10  -10
+    #  23     1 1999 206.086 22.00  10  -10
+    # -->> この形式で準備しましょう.
 
 # _ (1) 解析したいデータの読み込み -----------
 # __ 1) 弁別可能なタグの名前を指定 --------------
@@ -212,7 +215,7 @@ bathrack <- make.btrack(fmat = fitrack, bathy = bath)
 #      例えば, 0や対数 (log()など) を0で割った場合, NaNとなる.
 
 # 警告文を消去 (気になった時に)
-#assign("last.warning", NULL, env = baseenv())
+# assign("last.warning", NULL, env = baseenv())
 
 # _ (2) 補正経路データの出力 ----------
 #  最も下位の出力フォルダのパスを取得
@@ -231,6 +234,7 @@ write.csv(x = bathrack, row.names = F, file = file.path(end.fit.dir, out.btrk))
 # 保存フォルダパスの指定
 (end.fig.dir <- end.fit.dir %>% 
    str_replace(., pattern = paste0("fit(?=\\/", tagN, "\\/)"), replace = "fig"))
+create_dirs(end.fig.dir)
 
 # 陸地データを読み込み (trackitパッケージから)
 data(gmt3, package = "trackit")

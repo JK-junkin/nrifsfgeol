@@ -1,19 +1,22 @@
 
 ## Text Encoding: UTF-8
 
-## --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
-## To save R script as CP932, text encoding for Windows (in RStudio)
-## File --> Save with encoding... --> Choose Encoding -->
-##                                 check Show all encodings and select CP932
-## --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
-
+# --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+# The way to change Text Encoding in RStudio
+# File --> Reopen with Encoding... --> Choose Encoding -->
+#                                 check Show all encodings and select UTF-8
+# --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+# To save R script after changing Text Encoding for Windows in RStudio
+# File --> Save with encoding... --> Choose Encoding -->
+#                                 check Show all encodings and select CP932
+# --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
 
 ## == ======================================================================= ==
 ##      ukfsstまたはkftrackのモデル診断パラメータを一覧化するプログラム
 ## == ======================================================================= ==
 ## R version 3.4.3 ~ 3.5.2で動作確認済み
 ##
-## 初稿:2018/10/23; 最終更新: 2019/03/05
+## 初稿:2018/10/23; 最終更新: 2019/09/18
 ## 作成者: J.Kinoshita 
 ## 質問やバグ報告: NRIFSF-SKJG_at_ml.affrc.go.jp (_at_を@に変更して下さい) まで.
 ## == ======================================================================= ==
@@ -140,6 +143,6 @@ list <- dplyr::arrange(list, senario)
 write_xlsx(list, path = paste0(
   str_extract(file.path(fit.dir, fitdat.dir)[1], 
               pattern = "^.+(?=\\/[:graph:]+\\.csv$)"),
-  "/Results_of_KFmodels.xlsx"))
+  "/", tagN, "_Results_of_KFmodels.xlsx"))
 
 ########## ~~ %%%% おわり %%%% ~~ ##########
