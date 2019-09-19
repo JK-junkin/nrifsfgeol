@@ -14,19 +14,18 @@
 
 1. これらのRコードは, 照度センサー付き記録型電子標識 (主としてLAT2910, Lotek Wireless Inc.) データに基づくカツオの移動経路推定・補正を行うためのコードです.  
 
-1. 解析に利用した重要なRパッケージは[ukfsst](https://github.com/positioning/kalmanfilter/wiki)と[analyzepsat](https://github.com/positioning/kalmanfilter/wiki/Analyzepsat)です.  
+2. 解析に利用した重要なRパッケージは[ukfsst](https://github.com/positioning/kalmanfilter/wiki)と[analyzepsat](https://github.com/positioning/kalmanfilter/wiki/Analyzepsat)です.  
 
 ## 使い方 Usage
 1. 各Rコード (〇〇.R または 〇〇.r) を各自のパソコンにダウンロードしてください.  
 
-1. 各自のパソコンのフォルダ構造は以下を想定しています.<sup>[1](#mfn1)</sup>  
-
-```
+2. 各自のパソコンのフォルダ構造は以下を想定しています.<sup>[*](#mfn1)</sup>  
+```R
 (C:/Users/YOURNAME/Documents や /Users/YOURNAME/Documents など)
 └── geol
-    ├── LAT292data
-    ├── input
-    └── src
+    ├── LAT292data # ここにLAT292, LAT281などの元データを置く
+    ├── input      # 整形されたモデルインプットデータを置く
+    └── src        # ソースコードを置く
         ├── 0-format-LAT292data.r
         ├── 1-install-needed-libraries.r
         ├── 2-run-ukfsst-or-kftrack.r
@@ -35,14 +34,18 @@
         ├── ReadMe.txt
         └── func_get_oisstV2_highres.R
 ```
+3. Lotek社の記録型電子標識データ (LAT292, LAT281など) を解析する場合は`0-format-LAT292data.r`のコードから順番に実行してください. それ以外のデータは`1-install-needed-libraries.r`のコードから順に実行してください. `4-run-analyzepsat.R`のコードは海底地形による補正が必要な場合に実行してください. 陸地のない外洋を遊泳していた場合など, 海底地形による補正が不要なデータもあります.
 
-<a name="mfn1">1</a>: [国際水産資源研究所のホームページ](http://fsf.fra.affrc.go.jp/Tag/Atag_proc.html)に公開している概要説明スライドのp.113-120も参照ください.  
+4. Lotek社以外の電子標識データを用いる場合は**ukfsst**が必要とする所定の様式に整形する必要があります. 所定の様式とは[この様式](https://github.com/positioning/kalmanfilter/wiki/ArticleUkfsst#input-data-format)です.  
+
+---
+<a name="mfn1">*</a>: [国際水産資源研究所のホームページ](http://fsf.fra.affrc.go.jp/Tag/Atag_proc.html)に公開している概要説明スライドのp.113-120も参照ください.  
 
 ## インストール方法 Install
 ここでは注意していただきたい環境構築の方法を説明します.  
 1. Windowsで処理を行う場合, 別途[__Rtools__](https://cran.ism.ac.jp/bin/windows/Rtools/)のダウンロード & インストールが必要です. リンク先のページからご自身の使用しているRのバージョンに合ったRtools (大抵の場合は[Rtools35.exe](https://cran.ism.ac.jp/bin/windows/Rtools/Rtools35.exe)だろうと思います) を選択し, ご自身のパソコン環境を整えてください.  
 
-1. 上記コードで使用している __pathological__ パッケージは2018年5月30日にCRANから削除されたようです. 通常のパッケージのダウンロード方法ではうまくいかないので, 上記プログラム中で別の手順を踏んでダウンロード & インストールしています (= 最後に公開されていたヴァージョンのアーカイブをダウンロード & インストール). 
+2. 上記コードで使用している __pathological__ パッケージは2018年5月30日にCRANから削除されたようです. 通常のパッケージのダウンロード方法ではうまくいかないので, 上記プログラム中で別の手順を踏んでダウンロード & インストールしています (= 最後に公開されていたヴァージョンのアーカイブをダウンロード & インストール). 
 
 ## 依存関係 Requirement
 ### Rのバージョン
