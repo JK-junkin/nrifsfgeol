@@ -21,10 +21,10 @@
 
 1. 各自のパソコンのフォルダ構造は以下を想定しています.<sup>[1](#mfn1)</sup>  
 
-```R
+```
 (C:/Users/YOURNAME/Documents や /Users/YOURNAME/Documents など)
 └── geol
-	├── LAT292data
+    ├── LAT292data
 	├── input
 	└── src
 		├── 0-format-LAT292data.r
