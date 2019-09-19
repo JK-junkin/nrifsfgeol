@@ -45,7 +45,7 @@
 ここでは注意していただきたい環境構築の方法を説明します.  
 1. Windowsで処理を行う場合, 別途[__Rtools__](https://cran.ism.ac.jp/bin/windows/Rtools/)のダウンロード & インストールが必要です. リンク先のページからご自身の使用しているRのバージョンに合ったRtools (大抵の場合は[Rtools35.exe](https://cran.ism.ac.jp/bin/windows/Rtools/Rtools35.exe)だろうと思います) を選択し, ご自身のパソコン環境を整えてください.  
 
-2. 上記コードで使用している __pathological__ パッケージは2018年5月30日にCRANから削除されたようです. 通常のパッケージのダウンロード方法ではうまくいかないので, 上記プログラム中で別の手順を踏んでダウンロード & インストールしています (= 最後に公開されていたヴァージョンのアーカイブをダウンロード & インストール). 
+2. 上記コードで使用している __pathological__ パッケージは2019年5月30日にCRANのパッケージリポジトリから削除されたようです ([こちら](https://cran.r-project.org/web/packages/pathological/index.html)). したがって, 通常のパッケージのダウンロード方法ではうまくいかないため, 上記プログラム中で別の手順を踏んでダウンロード & インストールしています (= 最後に公開されていたバージョンのアーカイブをダウンロード & インストール). 
 
 ## 依存関係 Requirement
 ### Rのバージョン
@@ -60,7 +60,7 @@
 	mapproj  
 	maps  
 	needs  
-    pathological (2018.05.30 CRAN package repositoryから削除)  
+    pathological (2019.05.30 CRAN package repositoryから削除)  
 	tidyverse  
     zoo  
 
@@ -83,7 +83,7 @@
 	mapproj  
 	maps  
 	needs  
-	pathological (2018.05.30 CRAN package repositoryから削除)  
+	pathological (2019.05.30 CRAN package repositoryから削除)  
 	tidyverse  
 	ukfsst  
 
@@ -91,7 +91,7 @@
 	data.table  
 	devtools  
 	needs  
-	pathological (2018.05.30 CRAN package repositoryから削除)  
+	pathological (2019.05.30 CRAN package repositoryから削除)  
 	tcltk  
 	tidyverse  
 	writexl  
@@ -110,7 +110,7 @@
 	maps  
 	ncdf4  
 	needs  
-	pathological (2018.05.30 CRAN package repositoryから削除)  
+	pathological (2019.05.30 CRAN package repositoryから削除)  
 	tcltk  
 	tidyverse  
 
@@ -118,7 +118,7 @@
 	date  
     lubridate  
 	ncdf4  
-	pathological (2018.05.30 CRAN package repositoryから削除)  
+	pathological (2019.05.30 CRAN package repositoryから削除)  
     rvest  
 	tidyverse  
 
