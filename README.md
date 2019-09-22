@@ -6,7 +6,7 @@
   - [0-format-LAT292data.r](https://github.com/JK-junkin/nrifsfgeol/blob/master/src/0-format-LAT292data.r)  
   - [1-install-needed-libraries.r](https://github.com/JK-junkin/nrifsfgeol/blob/master/src/1-install-needed-libraries.r)  
   - [2-run-ukfsst-or-kftrack.r](https://github.com/JK-junkin/nrifsfgeol/blob/master/src/2-run-ukfsst-or-kftrack.r)  
-      - <span style="color: gray; ">(2.5-run-ukfsst-or-kftrack-parallel.r)</span>  
+      - [2.5-run-ukfsst-or-kftrack-parallel.r](https://github.com/JK-junkin/nrifsfgeol/blob/master/src/2.5-run-ukfsst-or-kftrack-parallel.r)  
   - [3-listup-kalmanfilter-fitResults.r](https://github.com/JK-junkin/nrifsfgeol/blob/master/src/3-listup-kalmanfilter-fitResults.r)  
   - [4-run-analyzepsat.R](https://github.com/JK-junkin/nrifsfgeol/blob/master/src/4-run-analyzepsat.R)  
   - [func\_get\_oisstV2_highres.R](https://github.com/JK-junkin/nrifsfgeol/blob/master/src/func_get_oisstV2_highres.R)  
